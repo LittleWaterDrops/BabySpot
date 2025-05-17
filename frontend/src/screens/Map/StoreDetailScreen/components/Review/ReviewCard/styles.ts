@@ -129,3 +129,10 @@ export const EditText = styled(Text)`
   ${FontStyles.captionMedium};
   color: ${GrayColors[700]};
 `;
+
+export const MoreTextButton = styled(TouchableOpacity)``;
+export const MoreText = styled(Text)`
+  ${FontStyles.captionMedium};
+  color: ${GrayColors[800]};
+  margin-left: auto;
+`;

@@ -193,7 +193,7 @@ const SearchScreen = () => {
               <S.SearchHistoryListTitle>최근 검색</S.SearchHistoryListTitle>
               <S.SearchHistoryList>
                 {recentSearchPlaces.length == 0 ? (
-                  <NoDataContainer text="서비스 준비 중입니다." />
+                  <NoDataContainer text="검색 결과가 없습니다." />
                 ) : (
                   withDivider(
                     recentSearchPlaces.map((recentSearchPlace, index) => (

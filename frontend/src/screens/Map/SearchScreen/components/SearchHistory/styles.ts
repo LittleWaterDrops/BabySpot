@@ -1,4 +1,4 @@
-import {Image, Pressable, Text} from 'react-native';
+import {Image, Pressable, Text, View} from 'react-native';
 
 import styled from 'styled-components/native';
 
@@ -34,4 +34,10 @@ export const Address = styled(Text).attrs({
 export const SearchDate = styled(Text)`
   ${FontStyles.captionMedium}
   color: ${GrayColors[400]};
+`;
+
+export const DateCloseContainer = styled(View)`
+  flex-direction: row;
+  align-items: center;
+  gap: ${scale(8)}px;
 `;

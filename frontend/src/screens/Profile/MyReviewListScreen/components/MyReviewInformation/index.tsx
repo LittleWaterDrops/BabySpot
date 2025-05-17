@@ -21,6 +21,7 @@ const MyReviewInformation = ({review}: MyReviewInformationProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isGalleryVisible, setIsGalleryVisible] = useState(false);
   const [galleryIndex, setGalleryIndex] = useState(0);
+  const [showMoreText, setShowMoreText] = useState(false);
 
   const openGallery = (index: number) => {
     setGalleryIndex(index);
@@ -28,6 +29,11 @@ const MyReviewInformation = ({review}: MyReviewInformationProps) => {
   };
 
   const galleryImages = review.imgUrls.map(imgUrl => ({uri: imgUrl}));
+
+  const handleTextLayout = (event: any) => {
+    const {lines} = event.nativeEvent;
+    setShowMoreText(lines.length > 2);
+  };
 
   return (
     <S.MyReviewInformationContainer>
@@ -61,11 +67,17 @@ const MyReviewInformation = ({review}: MyReviewInformationProps) => {
             ))}
           </S.RatingContainer>
         </S.SecondRowContainer>
-        <S.ReviewTextContainer onPress={() => setIsExpanded(!isExpanded)}>
-          <S.ReviewText numberOfLines={isExpanded ? undefined : 2}>
-            {review.content}
-          </S.ReviewText>
-        </S.ReviewTextContainer>
+
+        <S.ReviewText
+          numberOfLines={isExpanded ? undefined : 2}
+          onTextLayout={handleTextLayout}>
+          {review.content}
+        </S.ReviewText>
+        {showMoreText && (
+          <S.MoreTextButton onPress={() => setIsExpanded(!isExpanded)}>
+            <S.MoreText>{isExpanded ? '접기' : '더보기'}</S.MoreText>
+          </S.MoreTextButton>
+        )}
       </S.DetailContainer>
 
       <S.ImageContainer>

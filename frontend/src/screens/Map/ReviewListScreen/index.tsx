@@ -166,7 +166,7 @@ const ReviewListScreen = () => {
           <S.InformationContainer>
             <S.InformationIconImage source={IC_COMMENT} />
             <S.InformationText $isStar={false}>
-              {`리뷰 ${filteredReviews.length}개`}
+              {`리뷰 ${totalElements}개`}
             </S.InformationText>
           </S.InformationContainer>
         </S.InformationListContainer>

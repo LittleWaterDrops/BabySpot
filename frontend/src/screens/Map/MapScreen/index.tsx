@@ -138,13 +138,14 @@ const MapScreen = () => {
 
   const handleResearchButtonPress = () => {
     clearSelectedPlace();
-
     setSelectedAges([]);
-
     modifyZoomForSearch();
-
     setIsResearchButtonPressed(true);
     setIsPendingResearch(true);
+
+    setTimeout(() => {
+      setIsResearchButtonPressed(false);
+    }, 1000);
   };
 
   const modifyZoomForRecommend = () => {
@@ -260,7 +261,7 @@ const MapScreen = () => {
         return;
       }
     }
-  }, [isPendingResearch, zoom]);
+  }, [isPendingResearch, zoom, isResearchButtonPressed]);
 
   useEffect(() => {
     if (selectedAges.length === 0) {

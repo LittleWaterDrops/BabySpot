@@ -96,11 +96,19 @@ export const SmallIcon = styled(Image)`
   height: ${scale(16)}px;
 `;
 
-export const ReviewTextContainer = styled(TouchableOpacity)``;
-
 export const ReviewText = styled(Text)`
   ${FontStyles.captionMedium};
   color: ${GrayColors[800]};
+`;
+export const Wrapper = styled(TouchableOpacity)`
+  ${FontStyles.captionMedium};
+  color: ${GrayColors[800]};
+`;
+export const MoreTextButton = styled(TouchableOpacity)``;
+export const MoreText = styled(Text)`
+  ${FontStyles.captionMedium};
+  color: ${GrayColors[800]};
+  margin-left: auto;
 `;
 
 export const ImageContainer = styled(View)`

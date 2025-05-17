@@ -15,6 +15,11 @@ export const KeywordReviewContainer = styled(View)`
   padding: ${scale(32)}px ${scale(24)}px;
 `;
 
+export const Wrapper = styled(View)`
+  flex-direction: row;
+  gap: ${scale(8)}px;
+`;
+
 export const TextContainer = styled(View)`
   flex-direction: row;
   gap: ${scale(8)}px;
@@ -32,13 +37,23 @@ export const CountText = styled(Text)`
   color: ${GrayColors[300]};
 `;
 
+export const DescriptionText = styled(Text)`
+  ${FontStyles.captionMedium};
+  color: ${GrayColors[400]};
+  padding-bottom: ${scale(8)}px;
+`;
+
 export const ReviewListContainer = styled(View)`
   gap: ${scale(8)}px;
   flex: 1;
 `;
 
 export const ReviewContainer = styled(TouchableOpacity)`
-  flex-direction: row;
+  gap: ${scale(8)}px;
+  padding: ${scale(8)}px 0px;
+`;
+
+export const ReviewContainerDisabled = styled(View)`
   gap: ${scale(8)}px;
   padding: ${scale(8)}px 0px;
 `;
@@ -52,6 +67,13 @@ export const ContentText = styled(Text)`
   flex: 1;
   ${FontStyles.bodyMedium}
   color:${GrayColors[800]}
+`;
+
+export const MoreTextButton = styled(TouchableOpacity)``;
+export const MoreText = styled(Text)`
+  ${FontStyles.captionMedium};
+  color: ${GrayColors[800]};
+  margin-left: auto;
 `;
 
 export const HighlightedText = styled(Text)`

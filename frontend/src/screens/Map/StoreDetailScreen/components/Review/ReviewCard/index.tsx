@@ -19,6 +19,7 @@ const ReviewCard = (props: ReviewCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isGalleryVisible, setIsGalleryVisible] = useState(false);
   const [galleryIndex, setGalleryIndex] = useState(0);
+  const [showMoreText, setShowMoreText] = useState(false);
 
   const openGallery = (index: number) => {
     setGalleryIndex(index);
@@ -26,6 +27,11 @@ const ReviewCard = (props: ReviewCardProps) => {
   };
 
   const galleryImages = props.imgUrls.map(imgUrl => ({uri: imgUrl}));
+
+  const handleTextLayout = (event: any) => {
+    const {lines} = event.nativeEvent;
+    setShowMoreText(lines.length > 2);
+  };
 
   return (
     <S.ReviewCardContainer>
@@ -71,11 +77,16 @@ const ReviewCard = (props: ReviewCardProps) => {
         <S.RatingText>{props.rating.toFixed(1)}</S.RatingText>
       </S.RatingContainer>
 
-      <TouchableOpacity onPress={() => setIsExpanded(!isExpanded)}>
-        <S.ReviewText numberOfLines={isExpanded ? undefined : 2}>
-          {props.content}
-        </S.ReviewText>
-      </TouchableOpacity>
+      <S.ReviewText
+        numberOfLines={isExpanded ? undefined : 2}
+        onTextLayout={handleTextLayout}>
+        {props.content}
+      </S.ReviewText>
+      {showMoreText && (
+        <S.MoreTextButton onPress={() => setIsExpanded(!isExpanded)}>
+          <S.MoreText>더보기</S.MoreText>
+        </S.MoreTextButton>
+      )}
 
       <S.ImageContainer>
         {props.imgUrls.length > 4 ? (

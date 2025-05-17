@@ -11,6 +11,7 @@ import {IC_COMMENT, IC_YELLOW_STAR} from '../../../../../constants/icons';
 
 import * as S from './styles';
 import {useMapNavigation} from '../../../../../hooks/useNavigationHooks';
+import NoContent from '../NoContent';
 
 const CURRENT_DAY = new Date().getDay();
 const CLOUDFRONT_PREFIX = Config.CLOUDFRONT_PREFIX;
@@ -22,7 +23,15 @@ const SelectedStoreBasicCard = () => {
 
   const store = filteredStoreBasicInformation[selectedStoreIndex];
 
-  const haveBabyAges = store?.babyAges && store.babyAges.length > 0;
+  if (!store) {
+    return <NoContent />;
+  }
+
+  const haveBabyAges = store.babyAges && store.babyAges.length > 0;
+
+  if (selectedAges.length > 0 && !haveBabyAges) {
+    return <NoContent />;
+  }
 
   return (
     <S.StoreBasicInformationContainer

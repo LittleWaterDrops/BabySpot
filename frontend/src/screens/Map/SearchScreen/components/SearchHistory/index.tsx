@@ -22,10 +22,12 @@ const SearchHistory = ({
     <S.SearchHistoryContainer onPress={() => itemPressed(id)}>
       <S.Icon source={IC_SEARCH} />
       <S.Address>{searchTerm}</S.Address>
-      <S.SearchDate>{formatDateToString(new Date(createAt))}</S.SearchDate>
-      <S.IconContainer onPress={() => deletePressed(id)}>
-        <S.Icon source={IC_CLOSE} />
-      </S.IconContainer>
+      <S.DateCloseContainer>
+        <S.SearchDate>{formatDateToString(new Date(createAt))}</S.SearchDate>
+        <S.IconContainer onPress={() => deletePressed(id)}>
+          <S.Icon source={IC_CLOSE} />
+        </S.IconContainer>
+      </S.DateCloseContainer>
     </S.SearchHistoryContainer>
   );
 };

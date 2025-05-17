@@ -22,8 +22,19 @@ type KeywordReviewScreenRouteProp = RouteProp<
 const KeywordReviewScreen = () => {
   const route = useRoute<KeywordReviewScreenRouteProp>();
   const {keywordInformation} = route.params;
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [showMoreTexts, setShowMoreTexts] = useState<boolean[]>([]);
 
   const scrollRef = useRef<ScrollView>(null);
+
+  const handleTextLayout = (index: number) => (event: any) => {
+    const {lines} = event.nativeEvent;
+    setShowMoreTexts(prev => {
+      const newShowMoreTexts = [...prev];
+      newShowMoreTexts[index] = lines.length > 2;
+      return newShowMoreTexts;
+    });
+  };
 
   return (
     <S.ScrollViewContainer ref={scrollRef}>
@@ -32,6 +43,8 @@ const KeywordReviewScreen = () => {
           <S.Title>{keywordInformation.keyword}</S.Title>
           <S.CountText>{keywordInformation.count}</S.CountText>
         </S.TextContainer>
+
+        <S.DescriptionText>상위 약 20개의 리뷰를 보여드려요.</S.DescriptionText>
 
         <S.ReviewListContainer>
           {keywordInformation.keywordReviews.length === 0 ? (
@@ -95,14 +108,45 @@ const KeywordReviewScreen = () => {
                 };
 
                 return (
-                  <S.ReviewContainer key={index} onPress={handlePress}>
-                    <S.IconImage source={iconImage} resizeMode="contain" />
-                    <S.ContentText
-                      numberOfLines={isFold ? 2 : undefined}
-                      ellipsizeMode="tail">
-                      {parsedContent}
-                    </S.ContentText>
-                  </S.ReviewContainer>
+                  <>
+                    {showMoreTexts[index] ? (
+                      <S.ReviewContainer
+                        key={index}
+                        onPress={() => setIsFold(!isFold)}>
+                        <S.Wrapper>
+                          <S.IconImage
+                            source={iconImage}
+                            resizeMode="contain"
+                          />
+                          <S.ContentText
+                            numberOfLines={isFold ? 2 : undefined}
+                            onTextLayout={handleTextLayout(index)}>
+                            {parsedContent}
+                          </S.ContentText>
+                        </S.Wrapper>
+                        {showMoreTexts[index] && (
+                          <S.MoreText>{isFold ? '더보기' : '접기'}</S.MoreText>
+                        )}
+                      </S.ReviewContainer>
+                    ) : (
+                      <S.ReviewContainerDisabled key={index}>
+                        <S.Wrapper>
+                          <S.IconImage
+                            source={iconImage}
+                            resizeMode="contain"
+                          />
+                          <S.ContentText
+                            numberOfLines={isFold ? 2 : undefined}
+                            onTextLayout={handleTextLayout(index)}>
+                            {parsedContent}
+                          </S.ContentText>
+                        </S.Wrapper>
+                        {showMoreTexts[index] && (
+                          <S.MoreText>{isFold ? '더보기' : '접기'}</S.MoreText>
+                        )}
+                      </S.ReviewContainerDisabled>
+                    )}
+                  </>
                 );
               }),
               <ThinDivider />,
