@@ -46,23 +46,23 @@
 
 ### 로그인 /api/auth
 
-![image](./image,gif/api%20로그인.png){width=768 height=82}
+![image](./image,gif/api%20로그인.png)
 
 ### 매장 /api/store
 
-![image](./image,gif/api%20매장.png){width=768 height=69}
+![image](./image,gif/api%20매장.png)
 
 ### 사용자(member) /api/members
 
-![image](./image,gif/api%20사용자.png){width=768 height=134}
+![image](./image,gif/api%20사용자.png)
 
 ### 추천 /api/recommend
 
-![image](./image,gif/api%20최근검색어.png){width=770 height=27}
+![image](./image,gif/api%20최근검색어.png)
 
 ### 후기 /api/store/{storeId}/reviews
 
-![image](./image,gif/api%20후기.png){width=771 height=159}
+![image](./image,gif/api%20후기.png)
 
 # 🖥️ 시스템 아키텍쳐
 
@@ -87,8 +87,8 @@
 ### 🏗 Back-end
 
 <p align="left">
-  <img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Spring Security-6DB33F?style=for-the-badge&logo=Spring Security&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=Spring%20Boot&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Spring Security-6DB33F?style=for-the-badge&logo=Spring%20Security&logoColor=white"/>
   <img src="https://img.shields.io/badge/Spring Data JPA-6DB33F?style=for-the-badge&logoColor=white"/>
   </p>
 
